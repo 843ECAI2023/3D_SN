@@ -39,13 +39,13 @@ base_params = {
 params = base_params
 backend = Three_D_SN(params)
 file = params['dataset']
-p, h, y = load_data('input/{}/train.csv'.format(file), data_size=None,maxlen=params['input_shapes'][0][0])
+p, h, y = load_data('inputs/{}/train.csv'.format(file), data_size=None,maxlen=params['input_shapes'][0][0])
 x = [p,h]
 y = tf.keras.utils.to_categorical(y,num_classes=params['num_classes'])
-p_eval, h_eval, y_eval = load_data('input/{}/dev.csv'.format(file), data_size=None,maxlen=params['input_shapes'][0][0])
+p_eval, h_eval, y_eval = load_data('inputs/{}/dev.csv'.format(file), data_size=None,maxlen=params['input_shapes'][0][0])
 x_eval = [p_eval,h_eval]
 y_eval = tf.keras.utils.to_categorical(y_eval,num_classes=params['num_classes'])
-p_test, h_test, y_test = load_data('input/{}/test.csv'.format(file), data_size=None,maxlen=params['input_shapes'][0][0])
+p_test, h_test, y_test = load_data('inputs/{}/test.csv'.format(file), data_size=None,maxlen=params['input_shapes'][0][0])
 x_test = [p_test,h_test]
 y_test = tf.keras.utils.to_categorical(y_test,num_classes=params['num_classes'])
 model = backend.build()
