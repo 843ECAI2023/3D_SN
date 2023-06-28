@@ -62,9 +62,9 @@ earlystop = keras.callbacks.EarlyStopping(
       verbose=2, 
       mode='max'
       )
-bast_model_filepath = './output/best_emis_model.h5' 
+bast_model_filepath = './saved_model/best_model.h5' 
 checkpoint = keras.callbacks.ModelCheckpoint(
-      bast_model_filepath, 
+      best_model_filepath, 
       monitor='val_accuracy', 
       verbose=1, 
       save_best_only=True,
