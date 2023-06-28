@@ -32,7 +32,6 @@ def load_data(filename):
     return D
 
 
-# 加载数据集
 train_data = load_data('../input/train.csv')
 valid_data = load_data('../input/dev.csv')
 test_data = load_data('../input/test.csv')
@@ -79,7 +78,7 @@ model.summary()
 
 model.compile(
     loss='sparse_categorical_crossentropy',
-    optimizer=Adam(2e-5),  # 用足够小的学习率
+    optimizer=Adam(2e-5),  
     # optimizer=PiecewiseLinearLearningRate(Adam(5e-5), {10000: 1, 30000: 0.1}),
     metrics=['accuracy'],
 )
