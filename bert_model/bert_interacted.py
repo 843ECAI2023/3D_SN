@@ -9,7 +9,7 @@ from bert4keras.snippets import sequence_padding, DataGenerator
 from bert4keras.snippets import open
 from keras.layers import Dropout, Dense
 
-set_gelu('tanh')  # 切换gelu版本
+set_gelu('tanh')  
 
 maxlen = 64
 batch_size = 8
@@ -37,13 +37,12 @@ train_data = load_data('../input/train.csv')
 valid_data = load_data('../input/dev.csv')
 test_data = load_data('../input/test.csv')
 
-# 建立分词器
+
 tokenizer = Tokenizer(dict_path, do_lower_case=True)
 
 
 class data_generator(DataGenerator):
-    """数据生成器
-    """
+
     def __iter__(self, random=False):
         batch_token_ids, batch_segment_ids, batch_labels = [], [], []
         for is_end, (text1, text2, label) in self.sample(random):
@@ -61,7 +60,7 @@ class data_generator(DataGenerator):
                 batch_token_ids, batch_segment_ids, batch_labels = [], [], []
 
 
-# 加载预训练模型
+
 bert = build_transformer_model(
     model='bert',
     config_path=config_path,
@@ -85,7 +84,7 @@ model.compile(
     metrics=['accuracy'],
 )
 
-# 转换数据集
+
 train_generator = data_generator(train_data, batch_size)
 valid_generator = data_generator(valid_data, batch_size)
 test_generator = data_generator(test_data, batch_size)
