@@ -2,15 +2,7 @@ import numpy as np
 
 
 def one_hot(y, nb_classes):
-    """ one_hot
 
-    向量转one-hot
-
-    Arguments:
-        y: 带转换的向量
-        nb_classes: int 类别数
-
-    """
     y = np.asarray(y, dtype='int32')
     if not nb_classes:
         nb_classes = np.max(y) + 1
@@ -21,24 +13,7 @@ def one_hot(y, nb_classes):
 
 def pad_sequences(sequences, maxlen=None, dtype='int32', padding='post',
                   truncating='post', value=0.):
-    """ pad_sequences
 
-    把序列长度转变为一样长的，如果设置了maxlen则长度统一为maxlen，如果没有设置则默认取
-    最大的长度。填充和截取包括两种方法，post与pre，post指从尾部开始处理，pre指从头部
-    开始处理，默认都是从尾部开始。
-
-    Arguments:
-        sequences: 序列
-        maxlen: int 最大长度
-        dtype: 转变后的数据类型
-        padding: 填充方法'pre' or 'post'
-        truncating: 截取方法'pre' or 'post'
-        value: float 填充的值
-
-    Returns:
-        x: numpy array 填充后的序列维度为 (number_of_sequences, maxlen)
-
-    """
     lengths = [len(s) for s in sequences]
 
     nb_samples = len(sequences)
@@ -66,17 +41,7 @@ def pad_sequences(sequences, maxlen=None, dtype='int32', padding='post',
 
 
 def shuffle(*arrs):
-    """ shuffle
 
-    Shuffle 数据
-
-    Arguments:
-        *arrs: 数组数据
-
-    Returns:
-        shuffle后的数据
-
-    """
     arrs = list(arrs)
     for i, arr in enumerate(arrs):
         assert len(arrs[0]) == len(arrs[i])
