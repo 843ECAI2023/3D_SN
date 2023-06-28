@@ -77,7 +77,6 @@ def lr_scheduler(epoch, lr):
     else:
         return lr * 0.1
 
-# 定义LearningRateScheduler回调函数
 lr_scheduler_callback = keras.callbacks.LearningRateScheduler(lr_scheduler)
 
 model.fit(
